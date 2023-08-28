@@ -15,6 +15,17 @@
     }
 %>
 
+<%
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
+
+    if ("admin".equals(username) && "password".equals(password)) {
+        response.sendRedirect("profile.jsp");
+    } else if (username != null || password != null) {
+        System.out.println("Invalid username or password");
+    }
+%>
+
 <html>
 <head>
     <title>Title</title>
@@ -45,16 +56,6 @@
         </c:otherwise>
     </c:choose>
 
-    <%
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        if ("admin".equals(username) && "password".equals(password)) {
-            response.sendRedirect("profile.jsp");
-        } else if (username != null || password != null) {
-            System.out.println("Invalid username or password");
-        }
-    %>
 </form>
 
 
