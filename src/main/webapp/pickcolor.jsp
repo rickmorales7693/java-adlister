@@ -5,7 +5,7 @@
     <title>Pick Color</title>
 </head>
 <body>
-<form action="PickColorServlet" method="POST">
+<form action="pickcolor" method="POST">
     <label>Enter your color: </label>
     <input type="text" name="color">
     <input type="submit" value="Submit">
