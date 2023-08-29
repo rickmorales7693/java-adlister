@@ -14,6 +14,16 @@
         <option value="stuffed-crust">Stuffed Crust</option>
     </select><br><br>
 
+    <label>Sauce: </label>
+    <select name="sauce">
+        <option value="marinara">Marinara</option>
+        <option value="alfredo">Alfredo</option>
+        <option value="pesto">Pesto</option>
+        <option value="bbq">BBQ</option>
+        <option value="garlic">Garlic Parmesan</option>
+        <option value="none">No Sauce</option>
+    </select><br><br>
+
     <label>Size Type: </label>
     <select name="size">
         <option value="small">Small</option>
