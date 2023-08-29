@@ -5,7 +5,7 @@
     <title>View Color</title>
     <style>
         body {
-            background-color: <%=request.getParameter("color")%>;
+            background-color: ${background-color};
         }
     </style>
 </head>
