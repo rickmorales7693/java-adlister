@@ -6,8 +6,8 @@
 </head>
 <body>
 <form action="guess" method="POST">
-    <label for="number">Enter a number between 1 and 3:</label>
-    <input type="number" id="number" name="number">
+    <label>Enter a number between 1 and 3: </label>
+    <input type="text" name="guessedNumber" min="1" max="3" required>
     <input type="submit" value="Submit">
 </form>
 
