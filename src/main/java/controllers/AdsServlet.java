@@ -1,3 +1,8 @@
+package controllers;
+
+import daos.Ads;
+import daos.DaoFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,4 +19,8 @@ public class AdsServlet extends HttpServlet {
         req.getRequestDispatcher("/ads/index.jsp").forward(req, resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
 }
