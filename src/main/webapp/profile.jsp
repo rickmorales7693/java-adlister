@@ -10,8 +10,9 @@
 <jsp:include page="partials/navbar.jsp"/>
 
 <div class="container">
-    <h1>Viewing your profile.</h1>
+    <h1>Viewing your profile.<%= session.getAttribute("user") %></h1>
 </div>
+<a href="/logout">Logout</a>
 
 </body>
 </html>
