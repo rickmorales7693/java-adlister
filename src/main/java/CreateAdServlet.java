@@ -7,12 +7,18 @@ import java.io.IOException;
 
 @WebServlet(name = "CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
+
+    private AdsDao adsDao = DaoFactory.getAdsDao();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
             .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+
         Ad ad = new Ad(
             1, // for now we'll hardcode the user id
             request.getParameter("title"),

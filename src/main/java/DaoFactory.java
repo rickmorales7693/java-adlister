@@ -1,10 +1,13 @@
 public class DaoFactory {
     private static Ads adsDao;
+    private static Config config = new Config();
 
-    public static Ads getAdsDao() {
+    public static AdsDao getAdsDao() {
         if (adsDao == null) {
-            adsDao = new ListAdsDao();
+            adsDao = (Ads) new MySQLAdsDao(config);
         }
-        return adsDao;
+        return (AdsDao) adsDao;
     }
+
+
 }
