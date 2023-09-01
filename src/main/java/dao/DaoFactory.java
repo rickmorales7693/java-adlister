@@ -1,12 +1,16 @@
+package dao;
+
+import Utils.Config;
+
 public class DaoFactory {
     private static Ads adsDao;
     private static Config config = new Config();
 
-    public static AdsDao getAdsDao() {
+    public static Ads getAdsDao() {
         if (adsDao == null) {
-            adsDao = (Ads) new MySQLAdsDao(config);
+            adsDao = new MySQLAdsDao(config);
         }
-        return (AdsDao) adsDao;
+        return adsDao;
     }
 
 

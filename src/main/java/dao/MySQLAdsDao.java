@@ -1,21 +1,25 @@
+package dao;
+
+import Utils.Config;
+import models.Ad;
+
 import java.sql.*;
 import java.util.List;
-
-public class MySQLAdsDao implements AdsDao {
+public class MySQLAdsDao implements Ads {
     private Connection connection;
-
     public MySQLAdsDao(Config config) {
+        initializeConnection(config);
+    }
+    private void initializeConnection(Config config) {
         try {
-            connection = DriverManager.getConnection(
-                    Config.getUrl(),  // Changed from Config.getUrl()
-                    config.getUsername(),
-                    config.getPassword()
-            );
+            String username = config.getUser();
+            String password = config.getPassword();
+            String url = config.getUrl();
+            this.connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            throw new RuntimeException("Error connecting to the database!", e);
+            e.printStackTrace();
         }
     }
-
     @Override
     public List<Ad> all() {
         return null;
@@ -54,19 +58,5 @@ public class MySQLAdsDao implements AdsDao {
         }
     }
 
-    @Override
-    public Ad findAdById(long id) {
-        return null;
-    }
-
-    @Override
-    public void update(Ad ad) {
-
-    }
-
-    @Override
-    public void delete(long id) {
-
-    }
 
 }
