@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.List;
 
 public class MySQLAdsDao implements AdsDao {
     private Connection connection;
@@ -6,13 +7,18 @@ public class MySQLAdsDao implements AdsDao {
     public MySQLAdsDao(Config config) {
         try {
             connection = DriverManager.getConnection(
-                    config.getUrl(),  // Changed from Config.getUrl()
+                    Config.getUrl(),  // Changed from Config.getUrl()
                     config.getUsername(),
                     config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
+    }
+
+    @Override
+    public List<Ad> all() {
+        return null;
     }
 
     @Override
@@ -46,6 +52,21 @@ public class MySQLAdsDao implements AdsDao {
                 e.printStackTrace();
             }
         }
+    }
 
+    @Override
+    public Ad findAdById(long id) {
+        return null;
+    }
+
+    @Override
+    public void update(Ad ad) {
+
+    }
+
+    @Override
+    public void delete(long id) {
+
+    }
 
 }
