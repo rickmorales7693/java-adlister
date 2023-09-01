@@ -41,15 +41,15 @@ public class JDBCAlbumDao {
         return lastInsertedId;
     }
 
-    public void deleteAlbum(int id) {
-        try {
-            Statement statement = connection.createStatement();
-            String deleteQuery = String.format("DELETE FROM albums WHERE id = %d", id);
-            statement.executeUpdate(deleteQuery);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public void deleteAlbum(int id) {
+//        try {
+//            Statement statement = connection.createStatement();
+//            String deleteQuery = String.format("DELETE FROM albums WHERE id = %d", id);
+//            statement.executeUpdate(deleteQuery);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public static void main(String[] args) {
         JDBCAlbumDao albumDao = new JDBCAlbumDao();
