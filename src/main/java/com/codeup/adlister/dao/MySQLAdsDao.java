@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+
 import Utils.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
@@ -13,7 +14,7 @@ public class MySQLAdsDao implements Ads {
     private String sql;
     private PreparedStatement stmt;
 
-    public MySQLAdsDao(Config config) throws SQLException {
+    public MySQLAdsDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
@@ -28,10 +29,10 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> all() {
-        Statement stmt = null;
+        PreparedStatement stmt = null;
         try {
-            stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ads");
+            stmt = connection.prepareStatement("SELECT * FROM ads");
+            ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
@@ -41,14 +42,22 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getTitle());
             stmt.setString(3, ad.getDescription());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
+//            rs.next();
+//            return rs.getLong(1);
+            if(rs.next()){
+                return rs.getLong(1);
+            }else {
+                return -1L;
+            }
+
+
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
