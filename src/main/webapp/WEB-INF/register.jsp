@@ -31,7 +31,7 @@
             <td><input type="password" name="confirmPassword" value="${confirmPassword}"/>
             </td>
         </tr>
-            <input type="submit" value="Register"/>
+        <input type="submit" value="Register"/>
 
     </table>
 </form>
